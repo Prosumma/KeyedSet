@@ -8,12 +8,55 @@
 
 import Foundation
 
+/**
+ The protocol which elements of a `KeyedSet` must
+ implement.
+ 
+ Elements of a `KeyedSet` are subscripted by the
+ key attribute. By implementing `Keyed`, the
+ `keyedSetKeyPath` tells `KeyedSet` which attribute
+ is the key attribute.
+ 
+ `Keyed` elements must be unique by virtue of the
+ key attribute. If two elements in a `KeyedSet` are
+ unique in terms of `Hashable` and `Equatable`, but
+ have the same key attribute, an unrecoverable runtime
+ exception will occur.
+ 
+ For this reason, default implementations of `Hashable`
+ and `Equatable` are provided for types that implement
+ `Keyed`. In general, it is best to defer to these
+ implementations.
+ 
+ Implementation is straightforward:
+ 
+ ```
+ struct Order: Keyed {
+    static let keyedSetKeyPath = \Order.id
+    let id: UUID
+    let dateOrdered: Date
+ }
+ ```
+ 
+ Conforming implementations of `Hashable` and `Equatable` are
+ synthesized automatically for the `Order` type. Because
+ `keyedSetKeyPath` is `\Order.id`, subscripting is by `id`:
+ 
+ ```
+ func getOrder(id: UUID, from orders: KeyedSet<Order>) -> Order? {
+    return orders[id]
+ }
+ ```
+ */
 public protocol Keyed: Hashable {
+    /// The type of the key attribute.
     associatedtype KeyedSetKey: Hashable
+    /// The `KeyPath` of the key attribute.
     static var keyedSetKeyPath: KeyPath<Self, KeyedSetKey> { get }
 }
 
 public extension Keyed {
+    /// Shorthand for `self[keyPath: Self.keyedSetKeyPath]`.
     var keyedSetKey: KeyedSetKey {
         return self[keyPath: Self.keyedSetKeyPath]
     }
@@ -25,12 +68,55 @@ public extension Keyed {
     }
 }
 
-public extension Set where Element: Keyed {
+public extension Sequence where Self: SetAlgebra, Element: Keyed {
+    /**
+     Transforms the receiver into a dictionary keyed by the key
+     attribute of each `Keyed` element.
+     
+     - warning: If there are any duplicates in the receiver, an unrecoverable
+     runtime exception will occur.
+     */
     public func byKey() -> [Element.KeyedSetKey: Element] {
-        return Dictionary(uniqueKeysWithValues: map{ ($0.keyedSetKey, $0) })
+        if let ks = self as? KeyedSet<Element> {
+            return ks.byKey()
+        } else {
+            return Dictionary(uniqueKeysWithValues: map{ ($0.keyedSetKey, $0) })
+        }
     }
 }
 
+/**
+ A hybrid of `Set` and `Dictionary`. Mostly a `Set`, but with `Dictionary`-like subscripting operations.
+ 
+ Conforming elements must implement `Keyed`. (See the documentation for `Keyed`.)
+ 
+ The element's `Keyed` implementation determines which attribute to use for subscripting:
+ 
+ ```
+ struct Order: Keyed {
+    static let keyedSetKeyPath = \Order.id
+    let id: UUID
+    let dateOrdered: Date
+ }
+ ```
+ 
+ We can now look up elements in a `KeyedSet<Order>` instance by `UUID`:
+ 
+ ```
+ func getOrder(id: UUID, from orders: KeyedSet<Order>) -> Order? {
+    return orders[id]
+ }
+ ```
+ 
+ However, in all other respects, `KeyedSet` is a `Set`. (It implements `Collection` and `SetAlgebra`.) Adding to and removing from a `KeyedSet` is the same as with `Set`:
+ 
+ ```
+ var orders: KeyedSet<Order> = []
+ orders.update(with: Order(id: UUID()))
+ ```
+ 
+ All of the standard `SetAlgebra` operations such as `union`, `intersection` and so on are available.
+ */
 public struct KeyedSet<Element: Keyed> {
     private var elements: Set<Element>
     private var elementsByKey: [Element.KeyedSetKey: Element]
@@ -48,6 +134,11 @@ public struct KeyedSet<Element: Keyed> {
     
     public var isEmpty: Bool {
         return elements.isEmpty
+    }
+    
+    /// Return a dictionary of the elements keyed by key attribute.
+    public func byKey() -> [Element.KeyedSetKey : Element] {
+        return elementsByKey
     }
 }
 
@@ -180,9 +271,21 @@ public extension KeyedSet {
 }
 
 public extension KeyedSet {
+    /**
+     The standard `filter` method, but returns a `KeyedSet`.
+    
+     - parameter isIncluded: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be included in the returned array.
+     
+     - returns: A `KeyedSet` of the filtered elements.
+    */
     public func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> KeyedSet<Element> {
         return try KeyedSet(elements.filter(isIncluded))
     }
+    /**
+     The standard `map` method, but returns a `KeyedSet`.
+     
+     - parameter transform: A function from `Element` to `Element`.
+    */
     public func map(_ transform: (Element) throws -> Element) rethrows -> KeyedSet<Element> {
         return try KeyedSet(elements.map(transform))
     }
