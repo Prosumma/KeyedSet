@@ -18,7 +18,7 @@ public extension Keyed {
         return self[keyPath: Self.keyAttribute]
     }
     func hash(into hasher: inout Hasher) {
-        hasher.combine(Self.keyAttribute)
+        hasher.combine(keyedSetKey)
     }
     static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.keyedSetKey == rhs.keyedSetKey
