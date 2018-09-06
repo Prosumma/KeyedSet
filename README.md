@@ -25,8 +25,8 @@ In order to be placed into a `KeyedSet`, the element type must implement the `Ke
 
 ```swift
 protocol Keyed: Hashable {
-  associatedtype Key: Hashable
-  static var keyAttribute: KeyPath<Self, Key> { get }
+  associatedtype KeyedSetKey: Hashable
+  static var keyedSetKeyAttribute: KeyPath<Self, Key> { get }
 }
 
 // `Keyed` provides `KeyedSet`-compliant default
@@ -34,7 +34,7 @@ protocol Keyed: Hashable {
 struct Person: Keyed {
   // This is how our first example knew which attribute
   // to use for key lookup.
-  static let keyAttribute = \Person.ssn
+  static let keyedSetKeyAttribute = \Person.ssn
   let ssn: String
   let name: String
 }

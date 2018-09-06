@@ -9,13 +9,13 @@
 import Foundation
 
 public protocol Keyed: Hashable {
-    associatedtype Key: Hashable
-    static var keyAttribute: KeyPath<Self, Key> { get }
+    associatedtype KeyedSetKey: Hashable
+    static var keyedSetKeyAttribute: KeyPath<Self, KeyedSetKey> { get }
 }
 
 public extension Keyed {
-    var keyedSetKey: Key {
-        return self[keyPath: Self.keyAttribute]
+    var keyedSetKey: KeyedSetKey {
+        return self[keyPath: Self.keyedSetKeyAttribute]
     }
     func hash(into hasher: inout Hasher) {
         hasher.combine(keyedSetKey)
@@ -26,14 +26,14 @@ public extension Keyed {
 }
 
 public extension Set where Element: Keyed {
-    public func byKey() -> [Element.Key: Element] {
+    public func byKey() -> [Element.KeyedSetKey: Element] {
         return Dictionary(uniqueKeysWithValues: map{ ($0.keyedSetKey, $0) })
     }
 }
 
 public struct KeyedSet<Element: Keyed> {
     private var elements: Set<Element>
-    private var elementsByKey: [Element.Key: Element]
+    private var elementsByKey: [Element.KeyedSetKey: Element]
     
     public init() {
         elements = []
