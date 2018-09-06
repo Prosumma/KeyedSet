@@ -185,12 +185,15 @@ public extension KeyedSet {
     }
 }
 
-extension KeyedSet: Codable where Element: Codable {
+extension KeyedSet: Decodable where Element: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         elements = try container.decode(Set<Element>.self)
         elementsByKey = elements.byKey()
     }
+}
+
+extension KeyedSet: Encodable where Element: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self)
