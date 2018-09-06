@@ -18,6 +18,10 @@
 		F3E198E62140DD06004AECAE /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E198F42140DE2F004AECAE /* KeyedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E219202140698900B11C08 /* KeyedSet.swift */; };
 		F3E198F52140DE3D004AECAE /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3E198F72140E5EF004AECAE /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E198F62140E5EF004AECAE /* Sequence.swift */; };
+		F3E198F82140E5EF004AECAE /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E198F62140E5EF004AECAE /* Sequence.swift */; };
+		F3E198F92140E5EF004AECAE /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E198F62140E5EF004AECAE /* Sequence.swift */; };
+		F3E198FA2140E5EF004AECAE /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E198F62140E5EF004AECAE /* Sequence.swift */; };
 		F3E21910214068D200B11C08 /* KeyedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E21906214068D200B11C08 /* KeyedSet.framework */; };
 		F3E21917214068D200B11C08 /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E219212140698900B11C08 /* KeyedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E219202140698900B11C08 /* KeyedSet.swift */; };
@@ -55,6 +59,7 @@
 		F3E198CD2140DCED004AECAE /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E198D52140DCED004AECAE /* KeyedSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyedSetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E198EC2140DE17004AECAE /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3E198F62140E5EF004AECAE /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		F3E21906214068D200B11C08 /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E21909214068D200B11C08 /* KeyedSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedSet.h; sourceTree = "<group>"; };
 		F3E2190A214068D200B11C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -156,6 +161,7 @@
 				F3E21909214068D200B11C08 /* KeyedSet.h */,
 				F3E2190A214068D200B11C08 /* Info.plist */,
 				F3E219202140698900B11C08 /* KeyedSet.swift */,
+				F3E198F62140E5EF004AECAE /* Sequence.swift */,
 			);
 			path = KeyedSet;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E198F82140E5EF004AECAE /* Sequence.swift in Sources */,
 				F3E198C52140DC5A004AECAE /* KeyedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E198F92140E5EF004AECAE /* Sequence.swift in Sources */,
 				F3E198E42140DCFD004AECAE /* KeyedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E198FA2140E5EF004AECAE /* Sequence.swift in Sources */,
 				F3E198F42140DE2F004AECAE /* KeyedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E198F72140E5EF004AECAE /* Sequence.swift in Sources */,
 				F3E219212140698900B11C08 /* KeyedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
