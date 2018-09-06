@@ -103,9 +103,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		F3E21905214068D200B11C08 /* KeyedSet */ = {
+		F3E21905214068D200B11C08 /* KeyedSet iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3E2191A214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSet" */;
+			buildConfigurationList = F3E2191A214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSet iOS" */;
 			buildPhases = (
 				F3E21901214068D200B11C08 /* Headers */,
 				F3E21902214068D200B11C08 /* Sources */,
@@ -116,14 +116,14 @@
 			);
 			dependencies = (
 			);
-			name = KeyedSet;
+			name = "KeyedSet iOS";
 			productName = KeyedSet;
 			productReference = F3E21906214068D200B11C08 /* KeyedSet.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F3E2190E214068D200B11C08 /* KeyedSetTests */ = {
+		F3E2190E214068D200B11C08 /* KeyedSetTests iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3E2191D214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSetTests" */;
+			buildConfigurationList = F3E2191D214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSetTests iOS" */;
 			buildPhases = (
 				F3E2190B214068D200B11C08 /* Sources */,
 				F3E2190C214068D200B11C08 /* Frameworks */,
@@ -134,7 +134,7 @@
 			dependencies = (
 				F3E21912214068D200B11C08 /* PBXTargetDependency */,
 			);
-			name = KeyedSetTests;
+			name = "KeyedSetTests iOS";
 			productName = KeyedSetTests;
 			productReference = F3E2190F214068D200B11C08 /* KeyedSetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -170,8 +170,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F3E21905214068D200B11C08 /* KeyedSet */,
-				F3E2190E214068D200B11C08 /* KeyedSetTests */,
+				F3E21905214068D200B11C08 /* KeyedSet iOS */,
+				F3E2190E214068D200B11C08 /* KeyedSetTests iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -215,7 +215,7 @@
 /* Begin PBXTargetDependency section */
 		F3E21912214068D200B11C08 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F3E21905214068D200B11C08 /* KeyedSet */;
+			target = F3E21905214068D200B11C08 /* KeyedSet iOS */;
 			targetProxy = F3E21911214068D200B11C08 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -362,7 +362,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSet;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = KeyedSet;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -389,7 +389,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSet;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = KeyedSet;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -409,7 +409,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSetTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KeyedSetTests;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -428,7 +428,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSetTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KeyedSetTests;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -446,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3E2191A214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSet" */ = {
+		F3E2191A214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSet iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3E2191B214068D200B11C08 /* Debug */,
@@ -455,7 +455,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3E2191D214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSetTests" */ = {
+		F3E2191D214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSetTests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3E2191E214068D200B11C08 /* Debug */,
