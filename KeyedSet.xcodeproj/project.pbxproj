@@ -7,13 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3E198B72140DC2C004AECAE /* KeyedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E198AE2140DC2B004AECAE /* KeyedSet.framework */; };
+		F3E198BC2140DC2C004AECAE /* KeyedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E198BB2140DC2C004AECAE /* KeyedSetTests.swift */; };
+		F3E198C52140DC5A004AECAE /* KeyedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E219202140698900B11C08 /* KeyedSet.swift */; };
+		F3E198C62140DC5D004AECAE /* KeyedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E198BB2140DC2C004AECAE /* KeyedSetTests.swift */; };
+		F3E198C72140DC9C004AECAE /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E21910214068D200B11C08 /* KeyedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E21906214068D200B11C08 /* KeyedSet.framework */; };
-		F3E21915214068D200B11C08 /* KeyedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E21914214068D200B11C08 /* KeyedSetTests.swift */; };
 		F3E21917214068D200B11C08 /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E219212140698900B11C08 /* KeyedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E219202140698900B11C08 /* KeyedSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F3E198B82140DC2C004AECAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3E218FD214068D200B11C08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3E198AD2140DC2B004AECAE;
+			remoteInfo = KeyedSet;
+		};
 		F3E21911214068D200B11C08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F3E218FD214068D200B11C08 /* Project object */;
@@ -24,16 +35,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F3E198AE2140DC2B004AECAE /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3E198B62140DC2C004AECAE /* KeyedSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyedSetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3E198BB2140DC2C004AECAE /* KeyedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedSetTests.swift; sourceTree = "<group>"; };
+		F3E198BD2140DC2C004AECAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E21906214068D200B11C08 /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E21909214068D200B11C08 /* KeyedSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedSet.h; sourceTree = "<group>"; };
 		F3E2190A214068D200B11C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E2190F214068D200B11C08 /* KeyedSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyedSetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3E21914214068D200B11C08 /* KeyedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedSetTests.swift; sourceTree = "<group>"; };
-		F3E21916214068D200B11C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E219202140698900B11C08 /* KeyedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F3E198AB2140DC2B004AECAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E198B32140DC2B004AECAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E198B72140DC2C004AECAE /* KeyedSet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3E21903214068D200B11C08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -52,11 +80,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3E198BA2140DC2C004AECAE /* KeyedSetTests */ = {
+			isa = PBXGroup;
+			children = (
+				F3E198BB2140DC2C004AECAE /* KeyedSetTests.swift */,
+				F3E198BD2140DC2C004AECAE /* Info.plist */,
+			);
+			path = KeyedSetTests;
+			sourceTree = "<group>";
+		};
 		F3E218FC214068D200B11C08 = {
 			isa = PBXGroup;
 			children = (
 				F3E21908214068D200B11C08 /* KeyedSet */,
-				F3E21913214068D200B11C08 /* KeyedSetTests */,
+				F3E198BA2140DC2C004AECAE /* KeyedSetTests */,
 				F3E21907214068D200B11C08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +103,8 @@
 			children = (
 				F3E21906214068D200B11C08 /* KeyedSet.framework */,
 				F3E2190F214068D200B11C08 /* KeyedSetTests.xctest */,
+				F3E198AE2140DC2B004AECAE /* KeyedSet.framework */,
+				F3E198B62140DC2C004AECAE /* KeyedSetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,18 +119,17 @@
 			path = KeyedSet;
 			sourceTree = "<group>";
 		};
-		F3E21913214068D200B11C08 /* KeyedSetTests */ = {
-			isa = PBXGroup;
-			children = (
-				F3E21914214068D200B11C08 /* KeyedSetTests.swift */,
-				F3E21916214068D200B11C08 /* Info.plist */,
-			);
-			path = KeyedSetTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		F3E198A92140DC2B004AECAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E198C72140DC9C004AECAE /* KeyedSet.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3E21901214068D200B11C08 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,6 +141,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		F3E198AD2140DC2B004AECAE /* KeyedSet macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3E198BF2140DC2C004AECAE /* Build configuration list for PBXNativeTarget "KeyedSet macOS" */;
+			buildPhases = (
+				F3E198A92140DC2B004AECAE /* Headers */,
+				F3E198AA2140DC2B004AECAE /* Sources */,
+				F3E198AB2140DC2B004AECAE /* Frameworks */,
+				F3E198AC2140DC2B004AECAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KeyedSet macOS";
+			productName = KeyedSet;
+			productReference = F3E198AE2140DC2B004AECAE /* KeyedSet.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F3E198B52140DC2B004AECAE /* KeyedSetTests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3E198C22140DC2C004AECAE /* Build configuration list for PBXNativeTarget "KeyedSetTests macOS" */;
+			buildPhases = (
+				F3E198B22140DC2B004AECAE /* Sources */,
+				F3E198B32140DC2B004AECAE /* Frameworks */,
+				F3E198B42140DC2B004AECAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3E198B92140DC2C004AECAE /* PBXTargetDependency */,
+			);
+			name = "KeyedSetTests macOS";
+			productName = KeyedSetTests;
+			productReference = F3E198B62140DC2C004AECAE /* KeyedSetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F3E21905214068D200B11C08 /* KeyedSet iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3E2191A214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSet iOS" */;
@@ -149,6 +223,12 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Prosumma LLC";
 				TargetAttributes = {
+					F3E198AD2140DC2B004AECAE = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					F3E198B52140DC2B004AECAE = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					F3E21905214068D200B11C08 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1000;
@@ -172,11 +252,27 @@
 			targets = (
 				F3E21905214068D200B11C08 /* KeyedSet iOS */,
 				F3E2190E214068D200B11C08 /* KeyedSetTests iOS */,
+				F3E198AD2140DC2B004AECAE /* KeyedSet macOS */,
+				F3E198B52140DC2B004AECAE /* KeyedSetTests macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F3E198AC2140DC2B004AECAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E198B42140DC2B004AECAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3E21904214068D200B11C08 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +290,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F3E198AA2140DC2B004AECAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E198C52140DC5A004AECAE /* KeyedSet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E198B22140DC2B004AECAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E198BC2140DC2C004AECAE /* KeyedSetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3E21902214068D200B11C08 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,13 +318,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3E21915214068D200B11C08 /* KeyedSetTests.swift in Sources */,
+				F3E198C62140DC5D004AECAE /* KeyedSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F3E198B92140DC2C004AECAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3E198AD2140DC2B004AECAE /* KeyedSet macOS */;
+			targetProxy = F3E198B82140DC2C004AECAE /* PBXContainerItemProxy */;
+		};
 		F3E21912214068D200B11C08 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F3E21905214068D200B11C08 /* KeyedSet iOS */;
@@ -221,6 +338,106 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F3E198C02140DC2C004AECAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HJ7CB8H6VW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = KeyedSet/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSet;
+				PRODUCT_NAME = KeyedSet;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		F3E198C12140DC2C004AECAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HJ7CB8H6VW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = KeyedSet/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSet;
+				PRODUCT_NAME = KeyedSet;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		F3E198C32140DC2C004AECAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HJ7CB8H6VW;
+				INFOPLIST_FILE = KeyedSetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSetTests;
+				PRODUCT_NAME = KeyedSetTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		F3E198C42140DC2C004AECAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HJ7CB8H6VW;
+				INFOPLIST_FILE = KeyedSetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSetTests;
+				PRODUCT_NAME = KeyedSetTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 		F3E21918214068D200B11C08 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -437,6 +654,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F3E198BF2140DC2C004AECAE /* Build configuration list for PBXNativeTarget "KeyedSet macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3E198C02140DC2C004AECAE /* Debug */,
+				F3E198C12140DC2C004AECAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3E198C22140DC2C004AECAE /* Build configuration list for PBXNativeTarget "KeyedSetTests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3E198C32140DC2C004AECAE /* Debug */,
+				F3E198C42140DC2C004AECAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F3E21900214068D200B11C08 /* Build configuration list for PBXProject "KeyedSet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

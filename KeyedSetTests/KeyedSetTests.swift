@@ -9,31 +9,6 @@
 import XCTest
 @testable import KeyedSet
 
-struct Item: Keyed {
-    static let keyAttribute = \Item.id
-    let id = UUID()
-}
-
-struct Zing: Hashable {
-    let id = UUID()
-}
-
-extension Int {
-    func times(_ action: () throws -> Void) rethrows {
-        for _ in 0..<self {
-            try action()
-        }
-    }
-    
-    func times<T>(_ f: (Int) throws -> T) rethrows -> [T] {
-        return try (0..<self).map(f)
-    }
-    
-    func times<T>(_ f: () throws -> T) rethrows -> [T] {
-        return try (0..<self).map{ _ in try f() }
-    }
-}
-
 class KeyedSetTests: XCTestCase {
 
     override func setUp() {
@@ -51,11 +26,8 @@ class KeyedSetTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        let elements = 10_000.times(Item.init)
-        let others = elements.suffix(5_000) + 5_000.times(Item.init)
         self.measure {
-            var ks = KeyedSet(elements)
-            ks.formUnion(others)
+            // Put the code you want to measure the time of here.
         }
     }
 
