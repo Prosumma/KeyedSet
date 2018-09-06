@@ -10,12 +10,12 @@ import Foundation
 
 public protocol Keyed: Hashable {
     associatedtype KeyedSetKey: Hashable
-    static var keyedSetKeyAttribute: KeyPath<Self, KeyedSetKey> { get }
+    static var keyedSetKeyPath: KeyPath<Self, KeyedSetKey> { get }
 }
 
 public extension Keyed {
     var keyedSetKey: KeyedSetKey {
-        return self[keyPath: Self.keyedSetKeyAttribute]
+        return self[keyPath: Self.keyedSetKeyPath]
     }
     func hash(into hasher: inout Hasher) {
         hasher.combine(keyedSetKey)
