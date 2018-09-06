@@ -1,8 +1,8 @@
 ## KeyedSet
 
-A keyed set is a hybrid of a set and a dictionary. In a keyed set, some attribute of the elements in the set is used as a key with which dictionary subscript operations may be used.
+A hybrid of `Set` and `Dictionary`. Mostly a `Set`, but with `Dictionary`-like subscripting.
 
-For example, imagine that we want a set of `Person` instances, unique by social security number, and we wish to perform lookups by social security number.
+Imagine that we want a set of `Person` instances, unique by social security number, and we wish to perform lookups by social security number.
 
 ```swift
 let belle = Person(ssn: "111-11-2222", name: "Isabella")
@@ -17,7 +17,7 @@ if let belle = people["111-11-2222"] {
 }
 ```
 
-A `KeyedSet` is far more `Set` than `Dictionary`. The only `Dictionary`-like operation it supports is subscripting. In all other respects, `KeyedSet` is an ordinary `Set`. (Of course, `Set` is a value type, so `KeyedSet` is not a subtype of `Set`. More like a fraternal twin.)
+A `KeyedSet` is far more `Set` than `Dictionary`. The only `Dictionary` operation it supports is subscripting. In all other respects, `KeyedSet` is an ordinary `Set`. (Of course, `Set` is a value type, so `KeyedSet` is not a subtype of `Set`. More like a fraternal twin.)
 
 ### `Keyed`
 
