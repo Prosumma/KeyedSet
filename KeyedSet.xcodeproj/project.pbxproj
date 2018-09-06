@@ -16,6 +16,8 @@
 		F3E198E42140DCFD004AECAE /* KeyedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E219202140698900B11C08 /* KeyedSet.swift */; };
 		F3E198E52140DD00004AECAE /* KeyedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E198BB2140DC2C004AECAE /* KeyedSetTests.swift */; };
 		F3E198E62140DD06004AECAE /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3E198F42140DE2F004AECAE /* KeyedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E219202140698900B11C08 /* KeyedSet.swift */; };
+		F3E198F52140DE3D004AECAE /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E21910214068D200B11C08 /* KeyedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E21906214068D200B11C08 /* KeyedSet.framework */; };
 		F3E21917214068D200B11C08 /* KeyedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E21909214068D200B11C08 /* KeyedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E219212140698900B11C08 /* KeyedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E219202140698900B11C08 /* KeyedSet.swift */; };
@@ -52,6 +54,7 @@
 		F3E198BD2140DC2C004AECAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E198CD2140DCED004AECAE /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E198D52140DCED004AECAE /* KeyedSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyedSetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3E198EC2140DE17004AECAE /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E21906214068D200B11C08 /* KeyedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E21909214068D200B11C08 /* KeyedSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyedSet.h; sourceTree = "<group>"; };
 		F3E2190A214068D200B11C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +90,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E198D62140DCED004AECAE /* KeyedSet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E198E92140DE17004AECAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +145,7 @@
 				F3E198B62140DC2C004AECAE /* KeyedSetTests.xctest */,
 				F3E198CD2140DCED004AECAE /* KeyedSet.framework */,
 				F3E198D52140DCED004AECAE /* KeyedSetTests.xctest */,
+				F3E198EC2140DE17004AECAE /* KeyedSet.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +176,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E198E62140DD06004AECAE /* KeyedSet.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E198E72140DE17004AECAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E198F52140DE3D004AECAE /* KeyedSet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +270,24 @@
 			productReference = F3E198D52140DCED004AECAE /* KeyedSetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F3E198EB2140DE17004AECAE /* KeyedSet watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3E198F12140DE17004AECAE /* Build configuration list for PBXNativeTarget "KeyedSet watchOS" */;
+			buildPhases = (
+				F3E198E72140DE17004AECAE /* Headers */,
+				F3E198E82140DE17004AECAE /* Sources */,
+				F3E198E92140DE17004AECAE /* Frameworks */,
+				F3E198EA2140DE17004AECAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KeyedSet watchOS";
+			productName = KeyedSet;
+			productReference = F3E198EC2140DE17004AECAE /* KeyedSet.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		F3E21905214068D200B11C08 /* KeyedSet iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3E2191A214068D200B11C08 /* Build configuration list for PBXNativeTarget "KeyedSet iOS" */;
@@ -309,6 +346,9 @@
 					F3E198D42140DCED004AECAE = {
 						CreatedOnToolsVersion = 10.0;
 					};
+					F3E198EB2140DE17004AECAE = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					F3E21905214068D200B11C08 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1000;
@@ -336,6 +376,7 @@
 				F3E198B52140DC2B004AECAE /* KeyedSetTests macOS */,
 				F3E198CC2140DCED004AECAE /* KeyedSet tvOS */,
 				F3E198D42140DCED004AECAE /* KeyedSetTests tvOS */,
+				F3E198EB2140DE17004AECAE /* KeyedSet watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -363,6 +404,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E198D32140DCED004AECAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E198EA2140DE17004AECAE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -415,6 +463,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E198E52140DD00004AECAE /* KeyedSetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E198E82140DE17004AECAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E198F42140DE2F004AECAE /* KeyedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +704,62 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
+			};
+			name = Release;
+		};
+		F3E198F22140DE17004AECAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HJ7CB8H6VW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KeyedSet/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSet;
+				PRODUCT_NAME = KeyedSet;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		F3E198F32140DE17004AECAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HJ7CB8H6VW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KeyedSet/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.KeyedSet;
+				PRODUCT_NAME = KeyedSet;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
 			};
 			name = Release;
 		};
@@ -899,6 +1011,15 @@
 			buildConfigurations = (
 				F3E198E22140DCED004AECAE /* Debug */,
 				F3E198E32140DCED004AECAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3E198F12140DE17004AECAE /* Build configuration list for PBXNativeTarget "KeyedSet watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3E198F22140DE17004AECAE /* Debug */,
+				F3E198F32140DE17004AECAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
