@@ -97,7 +97,11 @@ extension KeyedSet: SetAlgebra {
     }
     
     public mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element) {
-        return (false, newMember)
+        let result = elements.insert(newMember)
+        if case let (inserted, memberAfterInsert) = result, inserted {
+            elementsByKey[memberAfterInsert.keyedSetKey] = memberAfterInsert
+        }
+        return result
     }
     
     public mutating func remove(_ member: Element) -> Element? {
@@ -178,5 +182,17 @@ public extension KeyedSet {
 public extension KeyedSet {
     public func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> KeyedSet<Element> {
         return try KeyedSet(elements.filter(isIncluded))
+    }
+}
+
+extension KeyedSet: Codable where Element: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        elements = try container.decode(Set<Element>.self)
+        elementsByKey = elements.byKey()
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self)
     }
 }

@@ -9,6 +9,8 @@
 import Foundation
 
 public extension Sequence where Element: Keyed {
+    /// Returns the first element in the sequence whose key
+    /// matches `key`.
     subscript(key key: Element.KeyedSetKey) -> Element? {
         return first { $0.keyedSetKey == key }
     }
