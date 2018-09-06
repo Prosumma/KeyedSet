@@ -2,31 +2,18 @@
 
 A keyed set is a hybrid of a set and a dictionary. In a keyed set, some attribute of the elements in the set is used as a key with which dictionary subscript operations may be used.
 
-For example, imagine that we want a set of `Order` items, keyed by an order identifier, and we want to be able to look up items in this set by order identifier using a simple subscript:
+For example, imagine that we want a set of `Person` instances, unique by social security number, and we wish to perform lookups by social security number.
 
 ```swift
-struct Order: Keyed {
-  static let keyAttribute = \Order.identifier
-  let identifier: UUID
-  var items: KeyedSet<OrderItem> = []
-  init(identifier: UUID) {
-    self.identifier = identifier
-  }
-  init() {
-    self.init(identifier: UUID())
-  }
-}
-
-let identifier = UUID()
-var orders: KeyedSet<Order> = [
-  Order(identifier: identifier),
-  Order(),
-  Order()
-]
-
-// We can now perform lookups using the identifier:
-if let order = orders[identifier] {
-  // Do something fun with this order
+let belle = Person(ssn: "111-11-2222", name: "Isabella")
+let greg = Person(ssn: "9876-54-321", name: "Greg")
+let bob = Person(ssn: "123-45-6789", name: "Bob")
+var people: KeyedSet<Person> = [belle, greg]
+// A KeyedSet is a set, with all the usual SetAlgebra operations.
+people.update(with: bob)
+// But it provides dictionary-style lookup by key.
+if let belle = people["111-11-2222"] {
+  print(belle.name)
 }
 ```
 
@@ -40,6 +27,16 @@ In order to be placed into a `KeyedSet`, the element type must implement the `Ke
 protocol Keyed: Hashable {
   associatedtype Key: Hashable
   static var keyAttribute: KeyPath<Self, Key> { get }
+}
+
+// `Keyed` provides `KeyedSet`-compliant default
+// implementations of `Hashable` and `Equatable`.
+struct Person: Keyed {
+  // This is how our first example knew which attribute
+  // to use for key lookup.
+  static let keyAttribute = \Person.ssn
+  let ssn: String
+  let name: String
 }
 ```
 
