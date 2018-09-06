@@ -183,12 +183,15 @@ public extension KeyedSet {
     public func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> KeyedSet<Element> {
         return try KeyedSet(elements.filter(isIncluded))
     }
+    public func map(_ transform: (Element) throws -> Element) rethrows -> KeyedSet<Element> {
+        return try KeyedSet(elements.map(transform))
+    }
 }
 
 extension KeyedSet: Decodable where Element: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        elements = try container.decode(Set<Element>.self)
+        elements = try container.decode(type(of: elements))
         elementsByKey = elements.byKey()
     }
 }
