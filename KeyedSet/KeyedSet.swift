@@ -302,6 +302,6 @@ extension KeyedSet: Decodable where Element: Decodable {
 extension KeyedSet: Encodable where Element: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        try container.encode(self)
+        try container.encode(elements)
     }
 }
