@@ -132,6 +132,10 @@ public struct KeyedSet<Element: Keyed> {
         assert(elements.count == elementsByKey.count)
     }
     
+    public subscript(key: Element.KeyedSetKey) -> Element? {
+        return elementsByKey[key]
+    }
+    
     public var isEmpty: Bool {
         return elements.isEmpty
     }
