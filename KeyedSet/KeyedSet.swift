@@ -237,6 +237,29 @@ extension KeyedSet: SetAlgebra {
 }
 
 public extension KeyedSet {
+    /// Returns a new set with the elements of both this set and the given
+    /// sequence.
+    ///
+    /// In the following example, the `attendeesAndVisitors` set is made up
+    /// of the elements of the `attendees` set and the `visitors` array:
+    ///
+    ///     let attendees: Set = ["Alicia", "Bethany", "Diana"]
+    ///     let visitors = ["Marcia", "Nathaniel"]
+    ///     let attendeesAndVisitors = attendees.union(visitors)
+    ///     print(attendeesAndVisitors)
+    ///     // Prints "["Diana", "Nathaniel", "Bethany", "Alicia", "Marcia"]"
+    ///
+    /// If the set already contains one or more elements that are also in
+    /// `other`, the existing members are kept. If `other` contains multiple
+    /// instances of equivalent elements, only the first instance is kept.
+    ///
+    ///     let initialIndices = Set(0..<5)
+    ///     let expandedIndices = initialIndices.union([2, 3, 6, 6, 7, 7])
+    ///     print(expandedIndices)
+    ///     // Prints "[2, 4, 6, 7, 0, 1, 3]"
+    ///
+    /// - Parameter other: A sequence of elements. `other` must be finite.
+    /// - Returns: A new set with the unique elements of this set and `other`.
     public func union<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
         var keyedSet = self
         keyedSet.formUnion(other)
@@ -255,6 +278,19 @@ public extension KeyedSet {
         return keyedSet
     }
     
+    /// Inserts the elements of the given sequence into the set.
+    ///
+    /// If the set already contains one or more elements that are also in
+    /// `other`, the existing members are kept. If `other` contains multiple
+    /// instances of equivalent elements, only the first instance is kept.
+    ///
+    ///     var attendees: Set = ["Alicia", "Bethany", "Diana"]
+    ///     let visitors = ["Diana", "Marcia", "Nathaniel"]
+    ///     attendees.formUnion(visitors)
+    ///     print(attendees)
+    ///     // Prints "["Diana", "Nathaniel", "Bethany", "Alicia", "Marcia"]"
+    ///
+    /// - Parameter other: A sequence of elements. `other` must be finite.
     public mutating func formUnion<S: Sequence>(_ other: S) where S.Element == Element {
         elements.formUnion(other)
         keyedElements = elements.byKey()
