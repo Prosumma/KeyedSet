@@ -11,24 +11,47 @@ import XCTest
 
 class KeyedSetTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testInit() {
+        let count = 10_000
+        let keyedSet = KeyedSet(count.times(Order.init))
+        XCTAssertEqual(keyedSet.count, count)
+    }
+    
+    func testInsert() {
+        let count = 100
+        var keyedSet = KeyedSet(count.times(Order.init))
+        let id = UUID()
+        var order = Order(id: id)
+        order.name = "Order1"
+        keyedSet.insert(order)
+        XCTAssertNotNil(keyedSet[id])
+        order = Order(id: id)
+        order.name = "Order2"
+        keyedSet.insert(order)
+        XCTAssertEqual(keyedSet.count, count + 1)
+        XCTAssertEqual(keyedSet[id]!.name!, "Order1")
+    }
+    
+    func testUpdate() {
+        let count = 100
+        var keyedSet = KeyedSet(count.times(Order.init))
+        let id = UUID()
+        var order = Order(id: id)
+        order.name = "Order1"
+        keyedSet.insert(order)
+        XCTAssertNotNil(keyedSet[id])
+        order = Order(id: id)
+        order.name = "Order2"
+        keyedSet.update(with: order)
+        XCTAssertEqual(keyedSet.count, count + 1)
+        XCTAssertEqual(keyedSet[id]!.name!, "Order2")
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testUnion() {
+        let count = 5_000
+        var keyedSet = KeyedSet(count.times(Order.init))
+        let halfCount = count / 2
+        keyedSet.formUnion(keyedSet.suffix(halfCount) + halfCount.times(Order.init))
+        XCTAssertEqual(keyedSet.count, count + halfCount)
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
