@@ -266,12 +266,44 @@ public extension KeyedSet {
         return keyedSet
     }
     
+    /// Returns a new set with the elements that are common to both this set and
+    /// the given sequence.
+    ///
+    /// In the following example, the `bothNeighborsAndEmployees` set is made up
+    /// of the elements that are in *both* the `employees` and `neighbors` sets.
+    /// Elements that are in only one or the other are left out of the result of
+    /// the intersection.
+    ///
+    ///     let employees: Set = ["Alicia", "Bethany", "Chris", "Diana", "Eric"]
+    ///     let neighbors: Set = ["Bethany", "Eric", "Forlani", "Greta"]
+    ///     let bothNeighborsAndEmployees = employees.intersection(neighbors)
+    ///     print(bothNeighborsAndEmployees)
+    ///     // Prints "["Bethany", "Eric"]"
+    ///
+    /// - Parameter other: Another set.
+    /// - Returns: A new set.
     public func intersection<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
         var keyedSet = self
         keyedSet.formIntersection(other)
         return keyedSet
     }
     
+    /// Returns a new set with the elements that are either in this set or in the
+    /// given sequence, but not in both.
+    ///
+    /// In the following example, the `eitherNeighborsOrEmployees` set is made up
+    /// of the elements of the `employees` and `neighbors` sets that are not in
+    /// both `employees` *and* `neighbors`. In particular, the names `"Bethany"`
+    /// and `"Eric"` do not appear in `eitherNeighborsOrEmployees`.
+    ///
+    ///     let employees: Set = ["Alicia", "Bethany", "Diana", "Eric"]
+    ///     let neighbors = ["Bethany", "Eric", "Forlani"]
+    ///     let eitherNeighborsOrEmployees = employees.symmetricDifference(neighbors)
+    ///     print(eitherNeighborsOrEmployees)
+    ///     // Prints "["Diana", "Forlani", "Alicia"]"
+    ///
+    /// - Parameter other: A sequence of elements. `other` must be finite.
+    /// - Returns: A new set.
     public mutating func symmetricDifference<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
         var keyedSet = self
         keyedSet.formSymmetricDifference(other)
@@ -297,12 +329,41 @@ public extension KeyedSet {
         assert(elements.count == keyedElements.count)
     }
     
+    /// Removes the elements of the set that aren't also in the given sequence.
+    ///
+    /// In the following example, the elements of the `employees` set that are
+    /// not also members of the `neighbors` set are removed. In particular, the
+    /// names `"Alicia"`, `"Chris"`, and `"Diana"` are removed.
+    ///
+    ///     var employees: Set = ["Alicia", "Bethany", "Chris", "Diana", "Eric"]
+    ///     let neighbors = ["Bethany", "Eric", "Forlani", "Greta"]
+    ///     employees.formIntersection(neighbors)
+    ///     print(employees)
+    ///     // Prints "["Bethany", "Eric"]"
+    ///
+    /// - Parameter other: A sequence of elements. `other` must be finite.
     public mutating func formIntersection<S: Sequence>(_ other: S) where S.Element == Element {
         elements.formIntersection(other)
         keyedElements = elements.byKey()
         assert(elements.count == keyedElements.count)
     }
     
+    /// Replace this set with the elements contained in this set or the given
+    /// set, but not both.
+    ///
+    /// In the following example, the elements of the `employees` set that are
+    /// also members of `neighbors` are removed from `employees`, while the
+    /// elements of `neighbors` that are not members of `employees` are added to
+    /// `employees`. In particular, the names `"Bethany"` and `"Eric"` are
+    /// removed from `employees` while the name `"Forlani"` is added.
+    ///
+    ///     var employees: Set = ["Alicia", "Bethany", "Diana", "Eric"]
+    ///     let neighbors = ["Bethany", "Eric", "Forlani"]
+    ///     employees.formSymmetricDifference(neighbors)
+    ///     print(employees)
+    ///     // Prints "["Diana", "Forlani", "Alicia"]"
+    ///
+    /// - Parameter other: A sequence of elements. `other` must be finite.
     public mutating func formSymmetricDifference<S: Sequence>(_ other: S) where S.Element == Element {
         elements.formSymmetricDifference(other)
         keyedElements = elements.byKey()
