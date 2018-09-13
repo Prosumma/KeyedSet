@@ -86,6 +86,16 @@ public extension Sequence where Self: SetAlgebra, Element: Keyed {
 }
 
 /**
+ This is a bit of future-proofing. I have plans for
+ `OrderedKeyedSet` and `SortedKeyedSet`. All would
+ implement `KeyedSetProtocol`.
+ */
+public protocol KeyedSetProtocol {
+    associatedtype Element: Keyed
+    subscript(key key: Element.KeyedSetKey) -> Element? { get set }
+}
+
+/**
  A hybrid of `Set` and `Dictionary`. Mostly a `Set`, but with `Dictionary`-like subscripting operations.
  
  Conforming elements must implement `Keyed`. (See the documentation for `Keyed`.)
@@ -117,7 +127,7 @@ public extension Sequence where Self: SetAlgebra, Element: Keyed {
  
  All of the standard `SetAlgebra` operations such as `union`, `intersection` and so on are available.
  */
-public struct KeyedSet<Element: Keyed> {
+public struct KeyedSet<Element: Keyed>: KeyedSetProtocol {
     private var elements: Set<Element>
     private var keyedElements: [Element.KeyedSetKey: Element]
     
@@ -133,7 +143,28 @@ public struct KeyedSet<Element: Keyed> {
     }
     
     public subscript(key: Element.KeyedSetKey) -> Element? {
-        return keyedElements[key]
+        get {
+            return self[key: key]
+        }
+        set {
+            self[key: key] = newValue
+        }
+    }
+    
+    public subscript(key key: Element.KeyedSetKey) -> Element? {
+        get {
+            return keyedElements[key]
+        }
+        set {
+            if let newValue = newValue {
+                if let ix = elements.firstIndex(of: newValue) {
+                    assert(elements[ix].keyedSetKey == key)
+                }
+                update(with: newValue)
+            } else if let element = keyedElements[key] {
+                remove(element)
+            }
+        }
     }
     
     public var isEmpty: Bool {
@@ -141,7 +172,7 @@ public struct KeyedSet<Element: Keyed> {
     }
     
     /// Return a dictionary of the elements keyed by key attribute.
-    public func byKey() -> [Element.KeyedSetKey : Element] {
+    public func byKey() -> [Element.KeyedSetKey: Element] {
         return keyedElements
     }
 }
