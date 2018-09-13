@@ -10,7 +10,7 @@ import XCTest
 @testable import KeyedSet
 
 class KeyedSetTests: XCTestCase {
-
+    
     func testInit() {
         let count = 10_000
         let keyedSet = KeyedSet(count.times(Order.init))
