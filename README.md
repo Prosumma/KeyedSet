@@ -40,7 +40,7 @@ struct Person: Keyed {
 }
 ```
 
-This protocol tells `KeyedSet` which attribute of the element type is to be used for dictionary subscript operations. Let us call this attribute the `key attribute`. _No two elements having the same key attribute may be present in the set at the same time._ Otherwise, an unrecoverable runtime exception may occur.
+This protocol tells `KeyedSet` which attribute of the element type is to be used for dictionary subscript operations. Let us call this attribute the `key attribute`. _No two elements having the same key attribute may be present in the set at the same time._ Otherwise, an unrecoverable runtime exception will eventually occur. 
 
 It is up to you to enforce this rule, but the easiest way to do so is to ensure that the element type is both `Hashable` and `Equatable` by the key attribute. If the element type conforms to the `Keyed` protocol, default implementations of `Hashable` and `Equatable` which follow this rule are provided.
 

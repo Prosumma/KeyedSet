@@ -46,6 +46,13 @@ class KeyedSetTests: XCTestCase {
         XCTAssertEqual(keyedSet.count, count + 1)
         XCTAssertEqual(keyedSet[id]!.name!, "Order2")
     }
+    
+    func testKeyedSubscriptAssignment() {
+        let id = UUID()
+        let order = Order(id: id)
+        var keyedSet: KeyedSet<Order> = []
+        keyedSet[id] = order
+    }
 
     func testUnion() {
         let count = 5_000
