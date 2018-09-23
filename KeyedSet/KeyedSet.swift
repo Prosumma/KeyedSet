@@ -92,7 +92,9 @@ public extension Sequence where Self: SetAlgebra, Element: Keyed {
  */
 public protocol KeyedSetProtocol {
     associatedtype Element: Keyed
+    init<S: Sequence>(_ elements: S) where S.Element == Element
     subscript(key key: Element.KeyedSetKey) -> Element? { get set }
+    func byKey() -> [Element.KeyedSetKey: Element]
 }
 
 /**

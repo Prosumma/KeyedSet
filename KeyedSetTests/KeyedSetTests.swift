@@ -52,6 +52,7 @@ class KeyedSetTests: XCTestCase {
         let order = Order(id: id)
         var keyedSet: KeyedSet<Order> = []
         keyedSet[id] = order
+        XCTAssertNotNil(keyedSet[id])
     }
 
     func testUnion() {
