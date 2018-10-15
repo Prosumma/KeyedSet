@@ -208,3 +208,17 @@ extension KeyedSet: ExpressibleByArrayLiteral {
         self.init(elements)
     }
 }
+
+extension KeyedSet: Decodable where Element: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        try self.init(container.decode([Element].self))
+    }
+}
+
+extension KeyedSet: Encodable where Element: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(Array(elements.values))
+    }
+}
