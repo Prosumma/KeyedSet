@@ -42,6 +42,19 @@ public struct KeyedSet<Element: Keyed>: KeyedSetProtocol {
         get { return elements[key] }
         set { elements[key] = newValue }
     }
+    @discardableResult public mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element) {
+        if let oldMember = elements[newMember.keyedSetKey] {
+            return (false, oldMember)
+        }
+        elements[newMember.keyedSetKey] = newMember
+        return (true, newMember)
+    }
+    @discardableResult public mutating func update(with newMember: Element) -> Element? {
+        return elements.updateValue(newMember, forKey: newMember.keyedSetKey)
+    }
+    @discardableResult public mutating func remove(_ member: Element) -> Element? {
+        return elements.removeValue(forKey: member.keyedSetKey)
+    }
     public func byKey() -> [Element.KeyedSetKey : Element] {
         return elements
     }
@@ -62,7 +75,7 @@ extension KeyedSet: Collection {
         return elements.values.index(after: i)
     }
     public subscript(position: Index) -> Element {
-        get { return elements.values[position] }
+        get { return elements[position].value }
     }
     public var startIndex: Index {
         return elements.values.startIndex
@@ -75,133 +88,53 @@ extension KeyedSet: Collection {
     }
 }
 
-protocol KeyedElementProtocol {
-    associatedtype Element: Keyed
-    var element: Element { get }
-}
-
-struct KeyedElement<Element: Keyed>: KeyedElementProtocol, Hashable {
-    let element: Element
-    
-    init(_ element: Element) {
-        self.element = element
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(element.keyedSetKey)
-    }
-    
-    static func ==(lhs: KeyedElement<Element>, rhs: KeyedElement<Element>) -> Bool {
-        return lhs.element.keyedSetKey == rhs.element.keyedSetKey
-    }
-}
-
-extension Sequence where Element: Keyed {
-    func asKeyedElements() -> Set<KeyedElement<Element>> {
-        return Set(map(KeyedElement.init))
-    }
-}
-
-extension Sequence where Element: KeyedElementProtocol & Hashable {
-    func byKey() -> Dictionary<Element.Element.KeyedSetKey, Element.Element> {
-        var dictionary: [Element.Element.KeyedSetKey: Element.Element] = [:]
+public extension Sequence where Element: Keyed {
+    func byKey() -> [Element.KeyedSetKey: Element] {
+        var result: [Element.KeyedSetKey: Element] = [:]
         for element in self {
-            dictionary[element.element.keyedSetKey] = element.element
+            result[element.keyedSetKey] = element
         }
-        return dictionary
-    }
-}
-
-extension Dictionary where Value: Keyed, Key == Value.KeyedSetKey {
-    func asKeyedElements() -> Set<KeyedElement<Value>> {
-        return Set(values.map(KeyedElement.init))
-    }
-}
-
-extension KeyedSet {
-    init<KeyedElements: Sequence>(_ elements: KeyedElements) where KeyedElements.Element: KeyedElementProtocol, KeyedElements.Element.Element == Element {
-        self.init(elements.map{ $0.element })
+        return result
     }
 }
 
 extension KeyedSet: Equatable where Element: Equatable {
-    public static func == (lhs: KeyedSet<Element>, rhs: KeyedSet<Element>) -> Bool {
+    public static func ==(lhs: KeyedSet<Element>, rhs: KeyedSet<Element>) -> Bool {
         return lhs.elements == rhs.elements
     }
 }
 
-extension KeyedSet: SetAlgebra where Element: Equatable {
+extension KeyedSet: SetAlgebra where Element: Hashable {
     public init() {}
     
-    public func contains(_ member: Element) -> Bool {
-        return elements.keys.contains(member.keyedSetKey)
-    }
-    
-    public mutating func formUnion(_ other: KeyedSet<Element>) {
-        elements = asKeyedElements().union(other.asKeyedElements()).byKey()
-    }
-    
-    public mutating func formIntersection(_ other: KeyedSet<Element>) {
-        elements = asKeyedElements().intersection(other.asKeyedElements()).byKey()
-    }
-    
-    public mutating func formSymmetricDifference(_ other: KeyedSet<Element>) {
-        elements = KeyedSet(asKeyedElements().symmetricDifference(other.asKeyedElements())).byKey()
-    }
-    
     public func union(_ other: KeyedSet<Element>) -> KeyedSet<Element> {
-        return KeyedSet(asKeyedElements().union(other.asKeyedElements()))
+        return KeyedSet(Set(self).union(other))
     }
     
     public func intersection(_ other: KeyedSet<Element>) -> KeyedSet<Element> {
-        return KeyedSet(asKeyedElements().intersection(other.asKeyedElements()))
+        return KeyedSet(Set(self).intersection(other))
     }
     
     public func symmetricDifference(_ other: KeyedSet<Element>) -> KeyedSet<Element> {
-        return KeyedSet(asKeyedElements().symmetricDifference(other.asKeyedElements()))
+        return KeyedSet(Set(self).symmetricDifference(other))
     }
     
-    @discardableResult public mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element) {
-        let key = newMember.keyedSetKey
-        if let oldElement = elements[key] {
-            return (false, oldElement)
-        }
-        elements[key] = newMember
-        return (true, newMember)
+    public mutating func formUnion(_ other: KeyedSet<Element>) {
+        elements = Set(self).union(other).byKey()
     }
     
-    @discardableResult public mutating func remove(_ member: Element) -> Element? {
-        return elements.removeValue(forKey: member.keyedSetKey)
+    public mutating func formIntersection(_ other: KeyedSet<Element>) {
+        elements = Set(self).intersection(other).byKey()
     }
     
-    @discardableResult public mutating func update(with newMember: Element) -> Element? {
-        return elements.updateValue(newMember, forKey: newMember.keyedSetKey)
+    public mutating func formSymmetricDifference(_ other: KeyedSet<Element>) {
+        elements = Set(self).symmetricDifference(other).byKey()
     }
 }
 
-public extension KeyedSet {
-    public mutating func formUnion<S: Sequence>(_ other: S) where S.Element == Element {
-        elements = asKeyedElements().union(other.asKeyedElements()).byKey()
-    }
-    
-    public mutating func formIntersection<S: Sequence>(_ other: S) where S.Element == Element {
-        elements = asKeyedElements().intersection(other.asKeyedElements()).byKey()
-    }
-    
-    public mutating func formSymmetricDifference<S: Sequence>(_ other: S) where S.Element == Element {
-        elements = asKeyedElements().symmetricDifference(other.asKeyedElements()).byKey()
-    }
-
+public extension KeyedSet where Element: Hashable {
     public func union<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
-        return KeyedSet(asKeyedElements().union(other.asKeyedElements()).map{ $0.element })
-    }
-    
-    public func intesection<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
-        return KeyedSet(asKeyedElements().intersection(other.asKeyedElements()).map{ $0.element })
-    }
-    
-    public func symmetricDifference<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
-        return KeyedSet(asKeyedElements().symmetricDifference(other.asKeyedElements()).map{ $0.element })
+        
     }
 }
 

@@ -9,7 +9,7 @@
 import Foundation
 import KeyedSet
 
-struct Order: Keyed, Equatable {
+struct Order: Keyed, Hashable {
     static let keyedSetKeyPath = \Order.id
     let id: UUID
     var name: String?
@@ -18,6 +18,9 @@ struct Order: Keyed, Equatable {
     }
     init() {
         self.init(id: UUID())
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 
