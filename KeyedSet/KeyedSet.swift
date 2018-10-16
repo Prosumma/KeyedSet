@@ -124,7 +124,13 @@ extension KeyedSet {
     }
 }
 
-extension KeyedSet: SetAlgebra {
+extension KeyedSet: Equatable where Element: Equatable {
+    public static func == (lhs: KeyedSet<Element>, rhs: KeyedSet<Element>) -> Bool {
+        return lhs.elements == rhs.elements
+    }
+}
+
+extension KeyedSet: SetAlgebra where Element: Equatable {
     public init() {}
     
     public func contains(_ member: Element) -> Bool {
@@ -143,10 +149,6 @@ extension KeyedSet: SetAlgebra {
         var set = asKeyedElements()
         set.formSymmetricDifference(other.asKeyedElements())
         elements = set.byKey()
-    }
-    
-    public static func == (lhs: KeyedSet<Element>, rhs: KeyedSet<Element>) -> Bool {
-        return lhs.elements.keys == rhs.elements.keys
     }
     
     public func union(_ other: KeyedSet<Element>) -> KeyedSet<Element> {

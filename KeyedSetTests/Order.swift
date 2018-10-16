@@ -9,7 +9,7 @@
 import Foundation
 import KeyedSet
 
-struct Order: Keyed {
+struct Order: Keyed, Equatable {
     static let keyedSetKeyPath = \Order.id
     let id: UUID
     var name: String?
