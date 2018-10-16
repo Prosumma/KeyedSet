@@ -146,9 +146,7 @@ extension KeyedSet: SetAlgebra where Element: Equatable {
     }
     
     public mutating func formSymmetricDifference(_ other: KeyedSet<Element>) {
-        var set = asKeyedElements()
-        set.formSymmetricDifference(other.asKeyedElements())
-        elements = set.byKey()
+        elements = KeyedSet(asKeyedElements().symmetricDifference(other.asKeyedElements())).byKey()
     }
     
     public func union(_ other: KeyedSet<Element>) -> KeyedSet<Element> {
