@@ -27,7 +27,7 @@ public protocol KeyedSetProtocol {
     func byValue() -> [Element]
 }
 
-public struct KeyedSet<Element: Keyed> {
+public struct KeyedSet<Element: Keyed>: KeyedSetProtocol {
     fileprivate var elements: [Element.KeyedSetKey: Element] = [:]
     public init<Elements: Sequence>(_ elements: Elements) where Elements.Element == Element {
         for element in elements {
@@ -42,6 +42,12 @@ public struct KeyedSet<Element: Keyed> {
         get { return elements[key] }
         set { elements[key] = newValue }
     }
+    public func byKey() -> [Element.KeyedSetKey : Element] {
+        return elements
+    }
+    public func byValue() -> [Element] {
+        return Array(elements.values)
+    }
 }
 
 extension KeyedSet: Sequence {
@@ -51,6 +57,7 @@ extension KeyedSet: Sequence {
 }
 
 extension KeyedSet: Collection {
+    
     public typealias Index = Dictionary<Element.KeyedSetKey, Element>.Values.Index
     public func index(after i: Index) -> Index {
         return elements.values.index(after: i)
@@ -126,15 +133,11 @@ extension KeyedSet: SetAlgebra {
     }
     
     public mutating func formUnion(_ other: KeyedSet<Element>) {
-        var set = asKeyedElements()
-        set.formUnion(other.asKeyedElements())
-        elements = set.byKey()
+        elements = asKeyedElements().union(other.asKeyedElements()).byKey()
     }
     
     public mutating func formIntersection(_ other: KeyedSet<Element>) {
-        var set = asKeyedElements()
-        set.formIntersection(other.asKeyedElements())
-        elements = set.byKey()
+        elements = asKeyedElements().intersection(other.asKeyedElements()).byKey()
     }
     
     public mutating func formSymmetricDifference(_ other: KeyedSet<Element>) {
