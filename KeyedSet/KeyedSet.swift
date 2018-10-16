@@ -134,7 +134,27 @@ extension KeyedSet: SetAlgebra where Element: Hashable {
 
 public extension KeyedSet where Element: Hashable {
     public func union<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
-        
+        return KeyedSet(Set(self).union(other))
+    }
+    
+    public func intersection<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
+        return KeyedSet(Set(self).intersection(other))
+    }
+    
+    public func symmetricDifference<S: Sequence>(_ other: S) -> KeyedSet<Element> where S.Element == Element {
+        return KeyedSet(Set(self).symmetricDifference(other))
+    }
+    
+    public mutating func formUnion<S: Sequence>(_ other: S) where S.Element == Element {
+        elements = Set(self).union(other).byKey()
+    }
+    
+    public mutating func formIntersection<S: Sequence>(_ other: S) where S.Element == Element {
+        elements = Set(self).intersection(other).byKey()
+    }
+    
+    public mutating func formSymmetricDifference<S: Sequence>(_ other: S) where S.Element == Element {
+        elements = Set(self).symmetricDifference(other).byKey()
     }
 }
 
