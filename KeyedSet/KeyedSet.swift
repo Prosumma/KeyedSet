@@ -57,7 +57,6 @@ extension KeyedSet: Sequence {
 }
 
 extension KeyedSet: Collection {
-    
     public typealias Index = Dictionary<Element.KeyedSetKey, Element>.Values.Index
     public func index(after i: Index) -> Index {
         return elements.values.index(after: i)
